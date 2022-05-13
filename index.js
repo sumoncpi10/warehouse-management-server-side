@@ -37,7 +37,7 @@ async function run() {
             const products = await cursor.toArray();
             res.send(products)
         })
-        // get product six
+        // get product Six
         app.get('/productshome', async (req, res) => {
             const query = {};
             const cursor = productCollection.find(query).limit(6);
