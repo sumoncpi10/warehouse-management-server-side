@@ -44,21 +44,7 @@ async function run() {
             const products = await cursor.toArray();
             res.send(products)
         })
-        // get Orders 
-        app.get('/orders', async (req, res) => {
-            const query = {};
-            const cursor = OrderCollection.find(query);
-            const orders = await cursor.toArray();
-            res.send(orders)
-        })
-        // get Orders by email
-        app.get('/order', async (req, res) => {
-            const email = req.query.email;
-            const query = { email };
-            const cursor = OrderCollection.find(query);
-            const orders = await cursor.toArray();
-            res.send(orders)
-        })
+
         // get product 
         app.get('/product/:id', async (req, res) => {
             const id = req.params.id;
@@ -101,6 +87,21 @@ async function run() {
             console.log('adding new order', newOrder);
             const result = await OrderCollection.insertOne(newOrder);
             res.send(result);
+        })
+        // get Orders 
+        app.get('/orders', async (req, res) => {
+            const query = {};
+            const cursor = OrderCollection.find(query);
+            const orders = await cursor.toArray();
+            res.send(orders)
+        })
+        // get Orders by email
+        app.get('/order', async (req, res) => {
+            const email = req.query.email;
+            const query = { email };
+            const cursor = OrderCollection.find(query);
+            const orders = await cursor.toArray();
+            res.send(orders)
         })
         // Delete Order 
         app.delete('/order/:id', async (req, res) => {
